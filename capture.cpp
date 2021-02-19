@@ -90,7 +90,7 @@ char *getTime()
     }
 
     seconds_last = curTime.tv_sec;
-    strftime(TimeString, 80, "%Y%m%d %H:%M:%S", localtime(&curTime.tv_sec));
+    strftime(TimeString, 80, "%Y-%m-%d %H:%M:%S", localtime(&curTime.tv_sec));
     return TimeString;
 }
 
@@ -929,15 +929,15 @@ int main(int argc, char *argv[])
 
                         if (showDetails == 1)
                         {
-                            sprintf(bufTemp, "Sensor %.1fC", (float)ltemp / 10);
+                            sprintf(bufTemp, "Sensor: %.1fC", (float)ltemp / 10);
                             cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
                                    linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                             iYOffset += iTextLineHeight;
-                            sprintf(bufTemp, "Exposure %.3f s", (float)autoExp / 1000000);
+                            sprintf(bufTemp, "Exposure: %.3f s", (float)autoExp / 1000000);
                             cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
                                    linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                             iYOffset += iTextLineHeight;
-                            sprintf(bufTemp, "Gain %d", (int)autoGain);
+                            sprintf(bufTemp, "Gain: %d", (int)autoGain);
                             cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
                                    linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                             iYOffset += iTextLineHeight;
