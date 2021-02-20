@@ -205,6 +205,7 @@ int main(int argc, char *argv[])
                        CV_FONT_HERSHEY_SCRIPT_SIMPLEX, CV_FONT_HERSHEY_SCRIPT_COMPLEX };
     int fontnumber = 0;
     int iStrLen, iTextX = 15, iTextY = 25;
+    int iNorthTextX = 500, iNorthTextY = 15;
     int iTextLineHeight = 30;
     char const *ImgText   = "";
     char const *ImgExtraText   = "";
@@ -412,6 +413,16 @@ int main(int argc, char *argv[])
             else if (strcmp(argv[i], "-texty") == 0)
             {
                 iTextY = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-northtextx") == 0)
+            {
+                iNorthTextX = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-northtexty") == 0)
+            {
+                iNorthTextY = atoi(argv[i + 1]);
                 i++;
             }
             else if (strcmp(argv[i], "-fontname") == 0)
@@ -704,12 +715,14 @@ int main(int argc, char *argv[])
     printf("- Sensor temperature:%02f\n", (float)ltemp / 10.0);
 
     // Adjusting variables for chosen binning
-    height    = height / bin;
-    width     = width / bin;
-    iTextX    = iTextX / bin;
-    iTextY    = iTextY / bin;
-    fontsize  = fontsize / bin;
-    linewidth = linewidth / bin;
+    height      = height / bin;
+    width       = width / bin;
+    iTextX      = iTextX / bin;
+    iTextY      = iTextY / bin;
+    iNorthTextX = iNorthTextX / bin;
+    iNorthTextY = iNorthTextY / bin;
+    fontsize    = fontsize / bin;
+    linewidth   = linewidth / bin;
 
     const char *sType;
     if (Image_type == ASI_IMG_RAW16)
@@ -942,6 +955,10 @@ int main(int argc, char *argv[])
                                    linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                             iYOffset += iTextLineHeight;
                         }
+
+                        sprintf(bufTemp, "%s", "N");
+                        cvText(pRgb, bufTemp, iNorthTextX, iNorthTextY + (iYOffset / bin), fontsize, linewidth,
+                               linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                         /**
                          * Display extra text if required. The extra text is read from the provided file. If the
                          * age of the file exceeds the specified limit then the text in the file is not displayed
