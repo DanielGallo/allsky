@@ -220,7 +220,7 @@ int main(int argc, char *argv[])
 
     char buf[1024]    = { 0 };
     char bufTime[128] = { 0 };
-    char bufTemp[128] = { 0 };
+    char bufTemp[255] = { 0 };
 
     int width             = 0;
     int height            = 0;
