@@ -929,7 +929,7 @@ int main(int argc, char *argv[])
 
                         if (showDetails == 1)
                         {
-                            sprintf(bufTemp, "Camera Sensor: %.1f\xB0 C", (float)ltemp / 10);
+                            sprintf(bufTemp, "Camera Sensor: %.1f %c%cC", (float)ltemp / 10, 0xC2, 0xB0);
                             cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
                                    linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                             iYOffset += iTextLineHeight;
