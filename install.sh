@@ -60,9 +60,3 @@ echo -en '\n'
 echo -en '\n'
 echo -en "The Allsky Software is now installed. You should reboot the Raspberry Pi to finish the installation\n"
 echo -en '\n'
-read -p "Do you want to reboot now? [y/n] " ans_yn
-case "$ans_yn" in
-  [Yy]|[Yy][Ee][Ss]) reboot now;;
-
-  *) exit 3;;
-esac
