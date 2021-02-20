@@ -206,6 +206,9 @@ int main(int argc, char *argv[])
     int fontnumber = 0;
     int iStrLen, iTextX = 15, iTextY = 25;
     int iNorthTextX = 500, iNorthTextY = 15;
+    int iSouthTextX = 500, iSouthTextY = 15;
+    int iEastTextX = 500, iEastTextY = 15;
+    int iWestTextX = 500, iWestTextY = 15;
     int iTextLineHeight = 30;
     char const *ImgText   = "";
     char const *ImgExtraText   = "";
@@ -423,6 +426,36 @@ int main(int argc, char *argv[])
             else if (strcmp(argv[i], "-northtexty") == 0)
             {
                 iNorthTextY = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-southtextx") == 0)
+            {
+                iSouthTextX = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-southtexty") == 0)
+            {
+                iSouthTextY = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-easttextx") == 0)
+            {
+                iEastTextX = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-easttexty") == 0)
+            {
+                iEastTextY = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-westtextx") == 0)
+            {
+                iWestTextX = atoi(argv[i + 1]);
+                i++;
+            }
+            else if (strcmp(argv[i], "-westtexty") == 0)
+            {
+                iWestTextY = atoi(argv[i + 1]);
                 i++;
             }
             else if (strcmp(argv[i], "-fontname") == 0)
@@ -721,6 +754,12 @@ int main(int argc, char *argv[])
     iTextY      = iTextY / bin;
     iNorthTextX = iNorthTextX / bin;
     iNorthTextY = iNorthTextY / bin;
+    iSouthTextX = iSouthTextX / bin;
+    iSouthTextY = iSouthTextY / bin;
+    iEastTextX  = iEastTextX / bin;
+    iEastTextY  = iEastTextY / bin;
+    iWestTextX  = iWestTextX / bin;
+    iWestTextY  = iWestTextY / bin;
     fontsize    = fontsize / bin;
     linewidth   = linewidth / bin;
 
@@ -957,7 +996,19 @@ int main(int argc, char *argv[])
                         }
 
                         sprintf(bufTemp, "%s", "N");
-                        cvText(pRgb, bufTemp, iNorthTextX, iNorthTextY + (iYOffset / bin), fontsize, linewidth,
+                        cvText(pRgb, bufTemp, iNorthTextX, iNorthTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
+                               linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
+
+                        sprintf(bufTemp, "%s", "S");
+                        cvText(pRgb, bufTemp, iSouthTextX, iSouthTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
+                               linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
+
+                        sprintf(bufTemp, "%s", "E");
+                        cvText(pRgb, bufTemp, iEastTextX, iEastTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
+                               linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
+
+                        sprintf(bufTemp, "%s", "W");
+                        cvText(pRgb, bufTemp, iWestTextX, iWestTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
                                linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                         /**
                          * Display extra text if required. The extra text is read from the provided file. If the
