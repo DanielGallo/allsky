@@ -996,19 +996,19 @@ int main(int argc, char *argv[])
                         }
 
                         sprintf(bufTemp, "%s", "N");
-                        cvText(pRgb, bufTemp, iNorthTextX, iNorthTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
+                        cvText(pRgb, bufTemp, iNorthTextX, iNorthTextY, fontsize * 0.1, linewidth,
                                linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
 
                         sprintf(bufTemp, "%s", "S");
-                        cvText(pRgb, bufTemp, iSouthTextX, iSouthTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
+                        cvText(pRgb, bufTemp, iSouthTextX, iSouthTextY, fontsize * 0.1, linewidth,
                                linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
 
                         sprintf(bufTemp, "%s", "E");
-                        cvText(pRgb, bufTemp, iEastTextX, iEastTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
+                        cvText(pRgb, bufTemp, iEastTextX, iEastTextY, fontsize * 0.1, linewidth,
                                linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
 
                         sprintf(bufTemp, "%s", "W");
-                        cvText(pRgb, bufTemp, iWestTextX, iWestTextY + (iYOffset / bin), fontsize * 0.1, linewidth,
+                        cvText(pRgb, bufTemp, iWestTextX, iWestTextY, fontsize * 0.1, linewidth,
                                linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                         /**
                          * Display extra text if required. The extra text is read from the provided file. If the
