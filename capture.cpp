@@ -220,7 +220,7 @@ int main(int argc, char *argv[])
 
     char buf[1024]    = { 0 };
     char bufTime[128] = { 0 };
-    char bufTemp[255] = { 0 };
+    char bufTemp[128] = { 0 };
 
     int width             = 0;
     int height            = 0;
@@ -929,7 +929,7 @@ int main(int argc, char *argv[])
 
                         if (showDetails == 1)
                         {
-                            sprintf(bufTemp, "Camera Sensor: %.1f\xB0 C", (float)ltemp / 10);
+                            sprintf(bufTemp, "Camera Sensor: %.1fC", (float)ltemp / 10);
                             cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
                                    linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                             iYOffset += iTextLineHeight;
