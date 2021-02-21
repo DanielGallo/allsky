@@ -59,6 +59,15 @@ unsigned long createRGB(int r, int g, int b)
     return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }
 
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+	size_t start_pos = 0;
+	while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+		str.replace(start_pos, from.length(), to);
+		start_pos += to.length();
+	}
+	return str;
+}
+
 void cvText(cv::Mat &img, const char *text, int x, int y, double fontsize, int linewidth, int linetype, int fontname,
             int fontcolor[], int imgtype, int outlinefont)
 {
@@ -397,17 +406,9 @@ int main(int argc, char *argv[])
             else if (strcmp(argv[i], "-locationtext") == 0)
             {
                 if ((char)argv[i + 1][0] != '-') {
-                    std::string locationText = (argv[i + 1]);
-                    std::string locFrom = "_";
-                    std::string locTo = " ";
+                    std::string locText = (argv[i + 1]);
 
-                    size_t pos = 0;
-                    while ((pos = locationText.find(locFrom, pos)) != std::string::npos) {
-                         locationText.replace(pos, 1, locTo);
-                         pos ++;
-                    }
-
-                    LocationText = (locationText);
+                    LocationText = (ReplaceAll(locText, std::string("_"), std::string(" ")));
 
                     i++;
                 }
