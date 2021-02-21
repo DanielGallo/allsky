@@ -212,6 +212,7 @@ int main(int argc, char *argv[])
     int iTextLineHeight = 30;
     char const *ImgText   = "";
     char const *ImgExtraText   = "";
+    char const *LocationText = "";
     int extraFileAge      = 0;   
     char textBuffer[1024] = { 0 };
     double fontsize       = 7;
@@ -390,6 +391,13 @@ int main(int argc, char *argv[])
             {
                 if ((char)argv[i + 1][0] != '-') {
                     ImgExtraText = (argv[i + 1]);
+                    i++;
+                }
+            }
+            else if (strcmp(argv[i], "-locationtext") == 0)
+            {
+                if ((char)argv[i + 1][0] != '-') {
+                    LocationText = (argv[i + 1]);
                     i++;
                 }
             }
@@ -978,6 +986,11 @@ int main(int argc, char *argv[])
                                    linetype[linenumber], fontname[fontnumber], fontcolor, Image_type, outlinefont);
                             iYOffset += iTextLineHeight;
                         }
+
+                        sprintf(bufTemp, "Location: %s", LocationText);
+                        cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
+                               linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
+                        iYOffset += iTextLineHeight;
 
                         if (showDetails == 1)
                         {
