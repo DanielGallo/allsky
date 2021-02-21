@@ -398,14 +398,16 @@ int main(int argc, char *argv[])
             {
                 if ((char)argv[i + 1][0] != '-') {
                     std::string locationText = (argv[i + 1]);
+                    std::string locFrom = "_";
+                    std::string locTo = " ";
 
                     size_t pos = 0;
-                    while ((pos = locationText.find("_", pos)) != std::string::npos) {
-                         locationText.replace(pos, 1, " ");
+                    while ((pos = locationText.find(locFrom, pos)) != std::string::npos) {
+                         locationText.replace(pos, 1, locTo);
                          pos ++;
                     }
 
-                    LocationText = locationText;
+                    LocationText = (locationText);
 
                     i++;
                 }
