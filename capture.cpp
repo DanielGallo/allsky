@@ -398,6 +398,13 @@ int main(int argc, char *argv[])
             {
                 if ((char)argv[i + 1][0] != '-') {
                     LocationText = (argv[i + 1]);
+
+                    size_t pos = 0;
+                    while ((pos = LocationText.find("_", pos)) != std::string::npos) {
+                         LocationText.replace(pos, 1, " ");
+                         pos ++;
+                    }
+
                     i++;
                 }
             }
