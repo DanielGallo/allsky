@@ -1004,22 +1004,6 @@ int main(int argc, char *argv[])
                                linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
                         iYOffset += iTextLineHeight;
 
-                        if (showDetails == 1)
-                        {
-                            sprintf(bufTemp, "Camera Sensor: %.1fC", (float)ltemp / 10);
-                            cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
-                                   linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
-                            iYOffset += iTextLineHeight;
-                            sprintf(bufTemp, "Exposure: %.3f s", (float)autoExp / 1000000);
-                            cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
-                                   linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
-                            iYOffset += iTextLineHeight;
-                            sprintf(bufTemp, "Gain: %d", (int)autoGain);
-                            cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
-                                   linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
-                            iYOffset += iTextLineHeight;
-                        }
-
                         sprintf(bufTemp, "%s", "N");
                         cvText(pRgb, bufTemp, iNorthTextX, iNorthTextY, fontsize * 0.1, linewidth,
                                linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
@@ -1097,6 +1081,22 @@ int main(int argc, char *argv[])
                             }
                         } else {
                             displayDebugText("No Extra Text File Specified\n", 1);
+                        }
+
+                        if (showDetails == 1)
+                        {
+                            sprintf(bufTemp, "Camera Sensor: %.1fC", (float)ltemp / 10);
+                            cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
+                                   linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
+                            iYOffset += iTextLineHeight;
+                            sprintf(bufTemp, "Exposure: %.3f s", (float)autoExp / 1000000);
+                            cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
+                                   linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
+                            iYOffset += iTextLineHeight;
+                            sprintf(bufTemp, "Gain: %d", (int)autoGain);
+                            cvText(pRgb, bufTemp, iTextX, iTextY + (iYOffset / bin), fontsize * 0.08, linewidth,
+                                   linetype[linenumber], fontname[fontnumber], smallFontcolor, Image_type, outlinefont);
+                            iYOffset += iTextLineHeight;
                         }
                     }
                     sprintf(textBuffer, "Exposure value: %.0f µs\n", (float)autoExp);
