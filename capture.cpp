@@ -406,9 +406,9 @@ int main(int argc, char *argv[])
             else if (strcmp(argv[i], "-locationtext") == 0)
             {
                 if ((char)argv[i + 1][0] != '-') {
-                    std::string locText = (argv[i + 1]);
+                    std::string locText = ReplaceAll((argv[i + 1]), std::string("_"), std::string(" "));
 
-                    LocationText = (ReplaceAll(locText, std::string("_"), std::string(" ")));
+                    LocationText = locText.c_str();
 
                     i++;
                 }
